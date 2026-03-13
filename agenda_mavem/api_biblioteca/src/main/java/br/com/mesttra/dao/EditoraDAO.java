@@ -15,7 +15,7 @@ public class EditoraDAO {
 
     public EditoraDAO(DatabaseConnection gerenciadorBancoDados) {
         this.gerenciadorBancoDados = gerenciadorBancoDados;
-    };
+    }
 
     // BUSCAR TODOS
     public List<EditoraModel> buscarTodos() {

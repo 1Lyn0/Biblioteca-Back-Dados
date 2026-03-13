@@ -60,7 +60,9 @@ public class EditoraDAO {
 
     // SALVAR (INSERT)
     public EditoraModel salvar(EditoraModel editora) {
-        String sql = "INSERT INTO editora (editora, cnpj, email, telefone, cep, estado, bairro, endereco, nacionalidade, endereco_web" +            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql =
+        "INSERT INTO editora (editora, cnpj, email, telefone, cep, estado, cidade, bairro, endereco, nacionalidade, endereco_web) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conexao = gerenciadorBancoDados.obterConexao();
              PreparedStatement instrucao = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -71,6 +73,7 @@ public class EditoraDAO {
                 instrucao.setString(4, editora.getTelefone());
                 instrucao.setString(5, editora.getCep());
                 instrucao.setString(6, editora.getEstado());
+                instrucao.setString(7, editora.getCidade());
                 instrucao.setString(8, editora.getBairro());
                 instrucao.setString(9, editora.getEndereco());
                 instrucao.setString(10, editora.getNacionalidade());
@@ -94,7 +97,7 @@ public class EditoraDAO {
     // ATUALIZAR
     public EditoraModel atualizar(Integer id, EditoraModel editora){
         String sql = "UPDATE editora SET editora = ?, cnpj = ?, email = ?, telefone = ?, cep = ?" + 
-                     "estado = ?, bairro = ?, endereco = ?, nacionalidade = ?, endereco_web = ? WHERE id = ?";
+                     "estado = ?, cidade = ?, bairro = ?, endereco = ?, nacionalidade = ?, endereco_web = ? WHERE id = ?";
 
         try (Connection conexao = gerenciadorBancoDados.obterConexao(); 
              PreparedStatement instrucao = conexao.prepareStatement(sql)) {
@@ -105,11 +108,12 @@ public class EditoraDAO {
                 instrucao.setString(4, editora.getTelefone());
                 instrucao.setString(5, editora.getCep());
                 instrucao.setString(6, editora.getEstado());
-                instrucao.setString(7, editora.getBairro());
-                instrucao.setString(8, editora.getEndereco());
-                instrucao.setString(9, editora.getNacionalidade());
-                instrucao.setString(10, editora.getEndereco_web());
-                instrucao.setInt(11, id);
+                instrucao.setString(7, editora.getCidade());
+                instrucao.setString(8, editora.getBairro());
+                instrucao.setString(9, editora.getEndereco());
+                instrucao.setString(10, editora.getNacionalidade());
+                instrucao.setString(11, editora.getEndereco_web());
+                instrucao.setInt(12, id);
 
                 int linhasAfetadas = instrucao.executeUpdate();
 
@@ -156,6 +160,7 @@ public class EditoraDAO {
                 resultado.getString("telefone"),
                 resultado.getString("cep"),
                 resultado.getString("estado"),
+                resultado.getString("cidade"),
                 resultado.getString("bairro"),
                 resultado.getString("endereco"),
                 resultado.getString("nacionalidade"),
@@ -165,7 +170,7 @@ public class EditoraDAO {
 
     public List<EditoraModel> buscarPorNome(String editoraParte) {
         List<EditoraModel> editoras = new ArrayList<>();
-        String sql = "SELECT * FROM editoras WHERE nome LIKE ?";
+        String sql = "SELECT * FROM editora WHERE editora LIKE ?";
 
         try (Connection conexao = gerenciadorBancoDados.obterConexao();
              PreparedStatement instrucao = conexao.prepareStatement(sql)) {

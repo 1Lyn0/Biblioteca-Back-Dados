@@ -29,6 +29,7 @@ public class EditoraTesteInicial implements CommandLineRunner {
         editora.setTelefone("(11) 3344-5566");
         editora.setCep("01310-100");
         editora.setEstado("São Paulo");
+        editora.setCidade("São Paulo");
         editora.setBairro("Bela Vista");
         editora.setEndereco("Avenida Paulista, 1000 - Conjunto 42");
         editora.setNacionalidade("Brasileira");

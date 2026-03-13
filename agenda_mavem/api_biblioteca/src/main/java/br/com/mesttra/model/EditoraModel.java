@@ -8,6 +8,7 @@ public class EditoraModel {
     private String telefone;
     private String cep;
     private String estado;
+    private String cidade;
     private String bairro;
     private String endereco;
     private String nacionalidade;
@@ -16,20 +17,21 @@ public class EditoraModel {
     public EditoraModel() {
     }
 
-    public EditoraModel(String editora, String cnpj, String telefone, String email, String cep, String estado, String bairro, String endereco, String nacionalidade, String endereco_web) {
+    public EditoraModel(String editora, String cnpj, String telefone, String email, String cep, String estado, String cidade, String bairro, String endereco, String nacionalidade, String endereco_web) {
         this.editora = editora;
         this.cnpj = cnpj;
         this.telefone = telefone;
         this.email = email;
         this.cep = cep;
         this.estado = estado;
+        this.cidade = cidade;
         this.bairro = bairro;
         this.endereco = endereco;
         this.nacionalidade = nacionalidade;
         this.endereco_web = endereco_web;
     }
 
-    public EditoraModel(int id, String editora, String cnpj, String telefone, String email, String cep, String estado, String bairro, String endereco, String nacionalidade, String endereco_web) {
+    public EditoraModel(int id, String editora, String cnpj, String telefone, String email, String cep, String estado, String cidade, String bairro, String endereco, String nacionalidade, String endereco_web) {
         this.id = id;
         this.editora = editora;
         this.cnpj = cnpj;
@@ -37,6 +39,7 @@ public class EditoraModel {
         this.email = email;
         this.cep = cep;
         this.estado = estado;
+        this.cidade = cidade;
         this.bairro = bairro;
         this.endereco = endereco;
         this.nacionalidade = nacionalidade;
@@ -69,6 +72,10 @@ public class EditoraModel {
 
     public String getEstado() {
         return estado;
+    }
+
+    public String getCidade() {
+        return cidade;
     }
 
     public String getBairro() {
@@ -113,6 +120,10 @@ public class EditoraModel {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public void setBairro(String bairro) {

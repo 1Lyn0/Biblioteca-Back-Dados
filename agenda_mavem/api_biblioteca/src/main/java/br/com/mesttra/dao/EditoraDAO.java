@@ -59,7 +59,7 @@ public class EditoraDAO {
     }
 
     // SALVAR (INSERT)
-    private EditoraModel salvar(EditoraModel editora) {
+    public EditoraModel salvar(EditoraModel editora) {
         String sql = "INSERT INTO editora (editora, cnpj, email, telefone, cep, estado, bairro, endereco, nacionalidade, endereco_web" +            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conexao = gerenciadorBancoDados.obterConexao();
